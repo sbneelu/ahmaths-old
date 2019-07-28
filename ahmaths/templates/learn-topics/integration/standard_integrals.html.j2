@@ -1,0 +1,45 @@
+{% extends 'learn-subtopic.html.j2' %}
+{% block explanation %}
+
+  <p>Some new functions and their integrals are introduced at Advanced Higher. If you are not familiar with these functions please see the <a href="{{ url_for('learn_subtopic', topic_id='differentiation', subtopic_id='new_functions') }}">New Functions and their Derivatives</a> page here.</p>
+  <h3>Standard Integrals</h3>
+  <p>The following standard integrals are all on the formulae list. However, it is useful to know and be able to recognise them to help you recognise when an integral is in a useful form.</p>
+  <p class="math">$$
+    \begin{eqnarray}
+      \int e^{ax} dx &amp;=&amp; \frac{1}{a} e^{ax} + c \\
+      \int \frac{dx}{x} = \int \frac{1}{x} dx &amp;=&amp; lnx + c \\
+      \int \mathrm{sec}^2 (ax) dx &amp;=&amp; \frac{1}{a} \tan (ax) + c \\
+      \int \frac{1}{\sqrt{a^2 - x^2}} dx &amp;=&amp; \sin ^{-1} (\frac{x}{a}) + c \\
+      \int \frac{1}{a^2 + x^2} dx &amp;=&amp; \frac{1}{a} \tan ^{-1} (\frac{x}{a}) + c \\
+    \end{eqnarray}
+  $$</p>
+  <h3>Useful Forms</h3>
+  <p>The following useful forms are derived using <a href="{{ url_for('learn_subtopic', topic_id='integration', subtopic_id='substitution') }}">integration by substitution</a>. They are not on the formulae list but you are not required to remember them as you can just use integration by substitution instead of using them but they can help you solve certain integrals faster.</p>
+  <p class="math">$$
+    \begin{eqnarray}
+      \int g(f(x)) f'(x) dx .= \\
+      \int \frac{f'(x)}{f(x)} dx .=
+    \end{eqnarray}
+  $$</p>
+  <h4>Examples</h4>
+  <p class="math">$$
+    \text{Find } \int \sin^2 x \cos x dx \\
+  $$</p>
+  <p>This integral is in the form </p>
+  <p class="math">$$
+    \begin{eqnarray}
+
+      \\
+      \text{Chain rule: }
+    \end{eqnarray}
+  $$</p>
+  <h4>Proofs</h4>
+  <p class="math">$$
+    \begin{eqnarray}
+      \text{Proving } \int g(f(x))f'(x)dx .= \\
+      \\
+      \text{Chain rule: }
+    \end{eqnarray}
+  $$</p>
+
+{% endblock explanation %}
