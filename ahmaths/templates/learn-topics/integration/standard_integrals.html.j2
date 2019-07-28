@@ -17,28 +17,69 @@
   <p>The following useful forms are derived using <a href="{{ url_for('learn_subtopic', topic_id='integration', subtopic_id='substitution') }}">integration by substitution</a>. They are not on the formulae list but you are not required to remember them as you can just use integration by substitution instead of using them but they can help you solve certain integrals faster.</p>
   <p class="math">$$
     \begin{eqnarray}
-      \int g(f(x)) f'(x) dx .= \\
-      \int \frac{f'(x)}{f(x)} dx .=
+      \int f(x) f'(x) dx &amp;=&amp; \frac{1}{2} (f(x))^2 + c \\
+      \int \frac{f'(x)}{f(x)} dx &amp;=&amp; -ln|f(x)| + c
     \end{eqnarray}
   $$</p>
   <h4>Examples</h4>
-  <p class="math">$$
-    \text{Find } \int \sin^2 x \cos x dx \\
-  $$</p>
-  <p>This integral is in the form </p>
+  <p>\(\int \sin x \cos x dx\) is in the form \(\int f(x)f'(x) dx\) where \(f(x) = \sin x\).</p>
   <p class="math">$$
     \begin{eqnarray}
-
+      f(x) &amp;=&amp; \sin x \\
+      \int f(x) f'(x) dx &amp;=&amp; \frac{1}{2} (f(x))^2 + c \\
       \\
-      \text{Chain rule: }
+      \int \sin x \cos x dx &amp;=&amp; \underline{\underline{\frac{1}{2} \sin ^2 x + c}}
     \end{eqnarray}
   $$</p>
+  <p>A helpful form can be used to find \( \int \tan x dx \).</p>
+  <p class="math">$$
+    \begin{eqnarray}
+      \int \tan x dx &amp;=&amp; \int \frac{\sin x}{\cos x} dx \\
+      &amp;=&amp; - \int \frac{- \sin x}{\cos x} dx \\
+      &amp;=&amp; \int \frac{f'(x)}{f(x)} dx (\text{Let } f(x) = \cos x) \\
+      &amp;=&amp; -ln|f(x)| + c \\
+      &amp;=&amp; \underline{\underline{-ln|\cos x| + c}}
+    \end{eqnarray}
+  $$</p>
+
   <h4>Proofs</h4>
   <p class="math">$$
     \begin{eqnarray}
-      \text{Proving } \int g(f(x))f'(x)dx .= \\
+      \text{Proving } \int f(x)f'(x)dx &amp;=&amp; \frac{1}{2} (f(x))^2 + c \\
       \\
-      \text{Chain rule: }
+      \text{Let } u &amp;=&amp; f(x) \\
+      \frac{du}{dx} &amp;=&amp; f'(x) \\
+      du &amp;=&amp; f'(x)dx \\
+      dx &amp;=&amp; \frac{1}{f'(x)} du \\
+      \\
+      LHS = \int f(x)f'(x)dx &amp;=&amp; \int u \cdot f'(x) \cdot \frac{1}{f'(x)} du \\
+      &amp;=&amp; \int u du \\
+      &amp;=&amp; \frac{1}{2} u^2 + c \\
+      &amp;=&amp; \frac{1}{2} (f(x))^2 + c = RHS \\
+      \\
+      \underline{\underline{\text{Q.E.D}}}
+
+    \end{eqnarray}
+  $$</p>
+  <p class="math">$$
+    \begin{eqnarray}
+      \text{Proving } \int \frac{f'(x)}{f(x)}dx &amp;=&amp; \frac{1}{2} (f(x))^2 + c \\
+      \\
+      \text{Let } u &amp;=&amp; \frac{1}{f(x)} \\
+      \frac{du}{dx} &amp;=&amp; f'(x) (- \frac{1}{(f(x))^2}) \\
+      \frac{du}{dx} &amp;=&amp; - \frac{f'(x)}{(f(x))^2} \\
+      du &amp;=&amp; - \frac{f'(x)}{(f(x))^2} dx \\
+      dx &amp;=&amp; - \frac{(f(x))^2}{f'(x)} du \\
+      dx &amp;=&amp; - \frac{1}{u^2 \cdot f'(x)} du \\
+      \\
+      LHS = \int \frac{f'(x)}{f(x)}dx &amp;=&amp; \int f'(x) \cdot \frac{1}{f(x)}dx \\
+      &amp;=&amp; \int u \cdot f'(x) (- \frac{1}{u^2 \cdot f'(x)}) du \\
+      &amp;=&amp; - \int \frac{1}{u} du \\
+      &amp;=&amp; - ln|u| + c \\
+      &amp;=&amp; -ln|f(x)| + c = RHS
+      \\
+      \underline{\underline{\text{Q.E.D}}}
+
     \end{eqnarray}
   $$</p>
 
