@@ -162,15 +162,15 @@
     <div class="col-sm-12 col-md-3 col-md-offset-1 mt-2">
       <div class="content-section">
         <h3>Content Explanation Pages</h3>
-        <small>See the pages below for explanations and examples about topics.</small>
+        <small>See the pages below for topic explanations and examples.</small>
         <ul class="text-left">
           {% for topic in topics %}
             <li>
-              <a href="{{ url_for('learn_topic', topic_id=topic.topic_id) }}">{{ topic.topic_name }}</a>
+              <a href="{{ url_for('learn_topic', topic_id=topic.topic_id) }}" target="_blank">{{ topic.topic_name }}</a>
               {% if topic.topic_id in subtopics %}
                 <ul>
                   {% for subtopic in subtopics[topic.topic_id] %}
-                    <li><a href="{{ url_for('learn_subtopic', topic_id=topic.topic_id, subtopic_id=subtopic.subtopic_id) }}">{{ subtopic.subtopic_name }}</a></li>
+                    <li><a href="{{ url_for('learn_subtopic', topic_id=topic.topic_id, subtopic_id=subtopic.subtopic_id) }}" target="_blank">{{ subtopic.subtopic_name }}</a></li>
                   {% endfor %}
                 </ul>
 
