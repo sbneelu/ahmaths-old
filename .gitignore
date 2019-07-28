@@ -2,5 +2,4 @@
 bin
 lib
 include
-setup_db.py
 ahmaths/__pycache__
