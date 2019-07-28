@@ -1,0 +1,14 @@
+{% extends 'layout.html.j2' %}
+{% block content %}
+  <div class="row paper-selection text-center">
+    {% for paper in papers %}
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="thumbnail paper-selection-element">
+          <h2>{{ paper.paper_name }}</h2>
+          <a class="btn btn-outline-info m-2" target="_blank" href="{{ url_for('static', filename='sqa-papers/papers/AH-Maths-' + paper.paper_id + '.pdf') }}">Paper [PDF]</a>
+          <a class="btn btn-outline-info m-2" target="_blank" href="{{ url_for('static', filename='sqa-papers/mi/AH-Maths-MI-' + paper.paper_id + '.pdf') }}">Marking Instructions [PDF]</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "layout.html.j2" %}
+{% block content %}
+  <div class="alert alert-info">If the maths symbols on this page (if there are any) do not render as expected then please consider upgrading to a more modern browser and/or ensure that JavaScript is enabled.</div>
+  <h2>{{ subtopic.subtopic_name }}</h2>
+  <p>Part of <a href="{{ url_for('learn_topic', topic_id=topic.topic_id) }}">{{ topic.topic_name }}</a></p>
+  {% block explanation %}{% endblock explanation %}
+  <br>
+  <br>
+{% endblock content %}
+{% block scripts %}
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+{% endblock scripts %}

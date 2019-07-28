@@ -1,0 +1,24 @@
+{% extends 'layout.html.j2' %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Welcome to AHmaths.com!</h1>
+    <div>
+      <p>
+        This website is an improved version of <a href="https://sbneelu.io/ahmaths">https://sbneelu.io/ahmaths</a>. Use it as a revision tool both during the year and around prelim/exam time.
+        Its features include:
+        <ul>
+          <li class="jumbotron-li-p"><p class="jumbotron-li-p">Progress tracking by topic and by question with marks and percentages</p></li>
+          <li class="jumbotron-li-p"><p class="jumbotron-li-p">Cross-device progress tracking through user accounts</p></li>
+          <li class="jumbotron-li-p"><p class="jumbotron-li-p">Explanations of all course content including examples</p></li>
+          <li class="jumbotron-li-p"><p class="jumbotron-li-p">Further resources for linked topics not in the Advanced Higher course</p></li>
+        </ul>
+      </p>
+      <p>All questions on SQA papers since 2007 are categorised by topic and have progress tracking available. Full SQA past papers are available from 2002 to 2018, and specimen papers from 2000, 2004 and 2016.</p>
+      <p>The formulae list is easily accessible from every page via the navigation bar.</p>
+      <p>Sign up now to get started!</p>
+      <p><b>Note:</b> This site requires a modern browser with JavaScript enabled to function correctly. If you have an older browser please consider upgrading or try the old site at <a href="https://sbneelu.io/ahmaths">https://sbneelu.io/ahmaths</a>.</p>
+      <p>If you would rather not create an account then feel free to use the old site. However, please note that registration takes less than 30 seconds and the old site does not sync results across devices and doesn't track marks, just whether answers are right or wrong. It also doesn't have additional features such as content explanations and further reading materials.</p>
+    </div>
+    <p><a class="btn btn-primary btn-lg mr-2" href="{{ url_for('signup') }}" role="button">Sign up</a><a class="btn btn-primary btn-lg ml-2" href="{{ url_for('login') }}" role="button">Login</a></p>
+  </div>
+{% endblock content %}
