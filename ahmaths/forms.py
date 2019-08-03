@@ -1,22 +1,18 @@
 from flask import url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField, HiddenField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Length, Email, ValidationError
 from ahmaths.models import User, Question
 
 
 class SignupForm(FlaskForm):
-    username = StringField('Username',
-                            validators=[DataRequired(), Length(min=2, max=20)])
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
 
-    email = StringField('Email',
-                        validators=[DataRequired(), Email()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
 
-    password = PasswordField('Password',
-                            validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
 
-    confirm_password = PasswordField('Confirm Password',
-                                    validators=[DataRequired(), EqualTo('password')])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
 
     submit = SubmitField('Sign Up')
 
@@ -25,6 +21,10 @@ class SignupForm(FlaskForm):
         if user:
             raise ValidationError('That username is taken. Please choose a different one.')
 
+    def validate_confirm_password(self, confirm_password):
+        if self.password.data != confirm_password.data:
+            raise ValidationError('Password and Confirm Password must be identical. Note that passwords are case-sensitive.')
+
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
@@ -32,21 +32,17 @@ class SignupForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username',
-                        validators=[DataRequired()])
-
-    password = PasswordField('Password',
-                            validators=[DataRequired()])
-
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember me')
-
     submit = SubmitField('Log in')
+
 
 class MarkForm(FlaskForm):
     question = HiddenField('Question')
-    mark = IntegerField('Mark',
-                        validators=[DataRequired()])
+    mark = IntegerField('Mark', validators=[DataRequired()])
     submit = SubmitField('Submit')
+
     def validate_mark(self, mark):
         question = self.question
         mark = int(mark.data)

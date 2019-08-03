@@ -5,17 +5,20 @@ from ahmaths.models import User, Topic, Question, Paper, Subtopic
 from ahmaths.save_results import save_marks_to_topic, save_marks_to_progress
 from flask_login import login_user, logout_user, current_user, login_required
 
+
 @app.route('/')
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     return render_template('index.html.j2')
 
+
 @app.route('/home')
 def home():
     if current_user.is_authenticated:
         return render_template('home.html.j2')
     return redirect(url_for('index'))
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -30,6 +33,7 @@ def signup():
     form.validate_on_submit()
     return render_template('signup.html.j2', form=form, title='Sign Up')
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -43,10 +47,18 @@ def login():
             flash('Login unsuccessful. Please check your username and password.', 'danger')
     return render_template('login.html.j2', form=form, title='Login')
 
+
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@app.route('/account')
+@login_required
+def account():
+    if current_user.is_authenticated:
+        return render_template('account.html.j2')
 
 
 @app.route('/practise')
@@ -101,10 +113,10 @@ def question(question_id):
         for topic in q.topics.split(','):
             topics += [Topic.query.filter_by(topic_id=topic).first()]
             for subtopic in q.subtopics.split(','):
-                if Subtopic.query.filter_by(subtopic_id = subtopic).first() and Subtopic.query.filter_by(subtopic_id = subtopic).first().topic_id == topic:
+                if Subtopic.query.filter_by(subtopic_id=subtopic).first() and Subtopic.query.filter_by(subtopic_id=subtopic).first().topic_id == topic:
                     if topic not in subtopics:
                         subtopics[topic] = []
-                    subtopics[topic] += [Subtopic.query.filter_by(subtopic_id = subtopic).first()]
+                    subtopics[topic] += [Subtopic.query.filter_by(subtopic_id=subtopic).first()]
 
         progress_strings = getattr(current_user, topic).split(',')
         progress = {}
@@ -121,15 +133,18 @@ def question(question_id):
         flash('Invalid question. Please try again.', 'danger')
         return redirect(url_for('practise'))
 
+
 @app.route('/revise')
 def revise():
     papers = Paper.query.all()
     return render_template('revise.html.j2', papers=papers, title='Revise')
 
+
 @app.route('/learn')
 def learn():
     topics = Topic.query.all()
     return render_template('learn.html.j2', topics=topics, title='Learn')
+
 
 @app.route('/learn/<string:topic_id>')
 def learn_topic(topic_id):
@@ -139,6 +154,7 @@ def learn_topic(topic_id):
     else:
         flash('Invalid topic. Please try again.', 'danger')
         return redirect(url_for('learn'))
+
 
 @app.route('/learn/<string:topic_id>/<string:subtopic_id>')
 def learn_subtopic(topic_id, subtopic_id):
@@ -153,6 +169,7 @@ def learn_subtopic(topic_id, subtopic_id):
     else:
         flash('Invalid topic. Please try again.', 'danger')
         return redirect(url_for('learn'))
+
 
 @app.route('/<path:path>/')
 def trailing_slash_redirect(path):

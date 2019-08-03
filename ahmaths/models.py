@@ -1,10 +1,11 @@
-from datetime import datetime
 from ahmaths import db, login_manager
 from flask_login import UserMixin
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,6 +31,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
 
+
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     topic_id = db.Column(db.String(20), unique=True, nullable=False)
@@ -38,6 +40,7 @@ class Topic(db.Model):
 
     def __repr__(self):
         return f"Topic('{self.topic_id}', '{self.topic_name}')"
+
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -52,6 +55,7 @@ class Question(db.Model):
     def __repr__(self):
         return f"Question('{self.question_id}', '{self.marks}', {self.video})"
 
+
 class Subtopic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subtopic_id = db.Column(db.String(20), unique=True, nullable=False)
@@ -60,6 +64,7 @@ class Subtopic(db.Model):
 
     def __repr__(self):
         return f"Subtopic('{self.subtopic_id}', '{self.subtopic_name}', '{self.topic_id}')"
+
 
 class Paper(db.Model):
     id = db.Column(db.Integer, primary_key=True)

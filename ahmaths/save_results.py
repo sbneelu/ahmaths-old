@@ -2,6 +2,7 @@ from flask_login import current_user
 from ahmaths import db
 from ahmaths.models import Question
 
+
 def save_marks_to_topic(topic_id, question_id, mark):
     progress_strings = getattr(current_user, topic_id).split(',')
     progress = {}
@@ -16,6 +17,7 @@ def save_marks_to_topic(topic_id, question_id, mark):
     progress_strings = progress_strings[:-1]
     setattr(current_user, topic_id, progress_strings)
     db.session.commit()
+
 
 def save_marks_to_progress(topic_id):
     progress_strings = current_user.progress.split(',')
@@ -32,7 +34,7 @@ def save_marks_to_progress(topic_id):
     questions = getattr(current_user, topic_id).split(',')
     for question in questions:
         mark += int(question.split(':')[1])
-    percentage = round(mark/max_marks * 100)
+    percentage = round(mark / max_marks * 100)
     progress[topic_id] = str(percentage)
     progress_strings = ''
     for key, value in progress.items():
