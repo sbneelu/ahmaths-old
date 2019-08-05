@@ -3,6 +3,7 @@ from ahmaths.models import Topic, Subtopic, Question, Paper, User
 
 app = create_app()
 
+
 def setup_db(db, app):
 
     with app.app_context():

@@ -2,4 +2,7 @@
 bin
 lib
 include
-ahmaths/__pycache__
+__pycache__
+*.pyc
+ahmaths/site.db
+config.json
