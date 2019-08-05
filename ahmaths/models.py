@@ -3,6 +3,7 @@ from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from ahmaths import db, login_manager
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -10,8 +11,8 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(60), nullable=False)
+    email = db.Column(db.Text, unique=True, nullable=False)
+    password = db.Column(db.Text, nullable=False)
     progress = db.Column(db.Text, nullable=False, default='partial_fractions:0,binomial_theorem:0,differentiation:0,integration:0,differential_equations:0,functions_graphs:0,systems_of_equations:0,complex_numbers:0,sequences_series:0,maclaurin_series:0,matrices:0,vectors:0,methods_of_proof:0,number_theory:0')
     partial_fractions = db.Column(db.Text, nullable=False, default='')
     binomial_theorem = db.Column(db.Text, nullable=False, default='')
