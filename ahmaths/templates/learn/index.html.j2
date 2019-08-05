@@ -1,0 +1,12 @@
+{% extends 'layout.html.j2' %}
+{% block content %}
+  <div class="row selection text-center">
+    {% for topic in topics %}
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <a class="thumbnail selection-element" href="{{ url_for('learn.topic', topic_id=topic.topic_id) }}">
+          <h2>{{ topic.topic_name }}</h2>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock content %}

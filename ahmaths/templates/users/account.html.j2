@@ -1,0 +1,7 @@
+{% extends 'layout.html.j2' %}
+{% block content %}
+  <h1>Account</h1>
+  <b>Email address: </b>{{ current_user.email }} (<a href="#">Change email address</a>) <br>
+  <b>Password: </b> ***************** (<a href="#">Change password</a>) <br>
+  <b>Progress: </b> <a href="#">Reset Progress</a> <br>
+{% endblock content %}

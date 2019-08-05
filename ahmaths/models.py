@@ -1,6 +1,7 @@
-from ahmaths import db, login_manager
+from flask import current_app
 from flask_login import UserMixin
-
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from ahmaths import db, login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -9,7 +10,6 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
     progress = db.Column(db.Text, nullable=False, default='partial_fractions:0,binomial_theorem:0,differentiation:0,integration:0,differential_equations:0,functions_graphs:0,systems_of_equations:0,complex_numbers:0,sequences_series:0,maclaurin_series:0,matrices:0,vectors:0,methods_of_proof:0,number_theory:0')
@@ -28,8 +28,21 @@ class User(db.Model, UserMixin):
     methods_of_proof = db.Column(db.Text, nullable=False, default='')
     number_theory = db.Column(db.Text, nullable=False, default='')
 
+    def get_reset_token(self, expires_seconds=1800):
+        s = Serializer(current_app.config['SECRET_KEY'], expires_seconds)
+        return s.dumps({'user_id': self.id}).decode('utf-8')
+
+    @staticmethod
+    def verify_reset_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['user_id']
+        except:
+            return None
+        return User.query.get(user_id)
+
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}')"
+        return f"User('{self.email}')"
 
 
 class Topic(db.Model):

@@ -1,4 +1,6 @@
-from ahmaths import app
+from ahmaths import create_app
+
+app = create_app()
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 5000, debug=True)

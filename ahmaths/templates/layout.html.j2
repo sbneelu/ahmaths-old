@@ -25,24 +25,24 @@
           <span class="sr-only">Toggle navigation</span>
           <span>Menu</span>
         </button>
-        <a class="navbar-brand" href="{{ url_for('home') }}">AHmaths.com</a>
+        <a class="navbar-brand" href="{{ url_for('main.home') }}">AHmaths.com</a>
       </div>
 
 
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav">
-          <li><a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a></li>
-          <li><a class="nav-item nav-link" href="{{ url_for('learn') }}">Learn</a></li>
-          <li><a class="nav-item nav-link" href="{{ url_for('practise') }}">Practise</a></li>
-          <li><a class="nav-item nav-link" href="{{ url_for('revise') }}">Revise</a></li>
+          <li><a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a></li>
+          <li><a class="nav-item nav-link" href="{{ url_for('learn.main') }}">Learn</a></li>
+          <li><a class="nav-item nav-link" href="{{ url_for('practise.main') }}">Practise</a></li>
+          <li><a class="nav-item nav-link" href="{{ url_for('revise.main') }}">Revise</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {% if current_user.is_authenticated %}
-            <li><a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a></li>
-            <li><a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a></li>
+            <li><a class="nav-item nav-link" href="{{ url_for('users.account') }}">Account</a></li>
+            <li><a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Logout</a></li>
           {% else %}
-            <li><a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a></li>
-            <li><a class="nav-item nav-link" href="{{ url_for('signup') }}">Sign up</a></li>
+            <li><a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a></li>
+            <li><a class="nav-item nav-link" href="{{ url_for('users.signup') }}">Sign up</a></li>
           {% endif %}
         </ul>
       </div>

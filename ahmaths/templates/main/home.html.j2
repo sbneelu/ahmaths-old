@@ -1,0 +1,20 @@
+{% extends 'layout.html.j2' %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-4 p-2">
+      <a class="full-width btn btn-outline-info" href="{{ url_for('learn.main') }}">
+        Learn
+      </a>
+    </div>
+    <div class="col-md-4 p-2">
+      <a class="full-width btn btn-outline-info" href="{{ url_for('practise.main') }}">
+        Practise
+      </a>
+    </div>
+    <div class="col-md-4 p-2">
+      <a class="full-width btn btn-outline-info" href="{{ url_for('revise.main') }}">
+        Revise
+      </a>
+    </div>
+  </div>
+{% endblock content %}
