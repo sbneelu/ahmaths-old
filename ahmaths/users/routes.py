@@ -1,4 +1,4 @@
-from flask import render_template, url_for, redirect, flash, request, Blueprint
+from flask import render_template, url_for, redirect, flash, request, Blueprint, current_app
 from flask_login import login_user, logout_user, current_user, login_required
 from ahmaths import bcrypt, db
 from ahmaths.models import User

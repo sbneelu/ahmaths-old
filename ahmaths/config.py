@@ -1,5 +1,4 @@
 import json
-import os
 
 with open('config.json', 'r') as f:
     config_file = f.read()
@@ -12,5 +11,5 @@ class Config:
     MAIL_SERVER = config['MAIL_SERVER']
     MAIL_PORT = config['MAIL_PORT']
     MAIL_USE_TLS = config['MAIL_USE_TLS']
-    MAIL_USERNAME = os.environ.get('APP_TESTING_EMAIL')
-    MAIL_PASSWORD = os.environ.get('APP_TESTING_EMAIL_PASSWORD')
+    MAIL_USERNAME = config['MAIL_USERNAME']
+    MAIL_PASSWORD = config['MAIL_PASSWORD']

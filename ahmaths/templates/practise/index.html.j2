@@ -1,5 +1,10 @@
 {% extends 'layout.html.j2' %}
 {% block content %}
+  <div class="text-center">
+    <h1>Practise</h1>
+    <p>Select a topic below to practise questions on the topic.</p>
+    <br>
+  </div>
   <div class="row selection text-center">
     {% for topic in topics %}
       {% set progress_percentage = progress[topic.topic_id] %}

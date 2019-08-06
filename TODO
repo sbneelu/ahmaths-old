@@ -1,0 +1,8 @@
+- Update index jumbotron content
+- Update home
+- Make password reset email nicer
+- Get email working on ahmaths.com domain rather than gmail.com
+- Ideally revoke user token for password reset once link has been used
+- Content explanations
+- Account page
+- Further reading

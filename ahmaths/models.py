@@ -1,6 +1,7 @@
 from flask import current_app
 from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from itsdangerous import BadSignature
 from ahmaths import db, login_manager
 
 
@@ -38,7 +39,7 @@ class User(db.Model, UserMixin):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
             user_id = s.loads(token)['user_id']
-        except:
+        except BadSignature:
             return None
         return User.query.get(user_id)
 
@@ -48,7 +49,7 @@ class User(db.Model, UserMixin):
 
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    topic_id = db.Column(db.String(20), unique=True, nullable=False)
+    topic_id = db.Column(db.String(32), unique=True, nullable=False)
     topic_name = db.Column(db.String(120), unique=True, nullable=False)
     subtopics = db.relationship('Subtopic', backref='topic', lazy=True)
 
@@ -58,9 +59,9 @@ class Topic(db.Model):
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    question_id = db.Column(db.String(20), unique=True, nullable=False)
-    paper = db.Column(db.String(20))
-    question_number = db.Column(db.String(20), nullable=False)
+    question_id = db.Column(db.String(32), unique=True, nullable=False)
+    paper = db.Column(db.String(32))
+    question_number = db.Column(db.String(32), nullable=False)
     marks = db.Column(db.Integer, nullable=False)
     video = db.Column(db.String(30))
     topics = db.Column(db.Text, nullable=False, default='')
@@ -72,9 +73,9 @@ class Question(db.Model):
 
 class Subtopic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    subtopic_id = db.Column(db.String(20), unique=True, nullable=False)
+    subtopic_id = db.Column(db.String(32), unique=True, nullable=False)
     subtopic_name = db.Column(db.String(120), unique=True, nullable=False)
-    topic_id = db.Column(db.Integer, db.ForeignKey('topic.topic_id'), nullable=False)
+    topic_id = db.Column(db.String(32), db.ForeignKey('topic.topic_id'), nullable=False)
 
     def __repr__(self):
         return f"Subtopic('{self.subtopic_id}', '{self.subtopic_name}', '{self.topic_id}')"

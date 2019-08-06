@@ -9,7 +9,12 @@ class SignupForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
+    beta_token = StringField('Beta Access Token', validators=[DataRequired()])
     submit = SubmitField('Sign Up')
+
+    def validate_beta_token(self, beta_token):
+        if self.beta_token.data.strip() != 'Fb3tMg':
+            raise ValidationError('Invalid beta access token.')
 
     def validate_confirm_password(self, confirm_password):
         if self.password.data != confirm_password.data:

@@ -14,7 +14,7 @@ def main():
 def topic(topic_id):
     topic = Topic.query.filter_by(topic_id=topic_id).first()
     if topic:
-        return render_template('learn/topics/' + topic.topic_id + '/topic.html.j2', topic=topic, title=topic.topic_name + ' | Learn')
+        return render_template('learn/topics/' + topic.topic_id + '/index.html.j2', topic=topic, title=topic.topic_name + ' | Learn')
     else:
         flash('Invalid topic. Please try again.', 'danger')
         return redirect(url_for('learn.main'))

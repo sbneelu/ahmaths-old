@@ -5,6 +5,7 @@
   <h2>{{ topic.topic_name }}</h2>
   {% block explanation %}{% endblock explanation %}
   {% if topic.subtopics %}
+    <p>Click on a subtopic to view detailed course notes and worked examples.</p>
     <h3>Subtopics</h3>
     <ul>
       {% for subtopic in topic.subtopics %}

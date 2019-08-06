@@ -26,13 +26,12 @@ def topic(topic_id):
         topic = Topic.query.filter_by(topic_id=topic_id).first()
         questions = Question.query.filter(Question.topics.contains(topic_id)).all()
         progress_strings = getattr(current_user, topic_id).split(',')
-        # progress_strings = '2007Q4:0011,2011Q1:1111,2018Q2:0001'.split(',')
         progress = {}
         for progress_string in progress_strings:
             if progress_string != '':
                 progress_string = progress_string.split(':')
                 progress[progress_string[0]] = progress_string[1]
-        return render_template('learn/question-selection.html.j2', progress=progress, questions=reversed(questions), topic=topic, title=topic.topic_name + ' | Practise')
+        return render_template('practise/question-selection.html.j2', progress=progress, questions=reversed(questions), topic=topic, title=topic.topic_name + ' | Practise')
     else:
         flash('Invalid topic. Please try again.', 'danger')
         return redirect(url_for('practise.main'))
@@ -74,7 +73,7 @@ def question(question_id):
         show_marking = request.args.get('show_marking')
         if show_marking == 'mark_validation_error':
             flash('Invalid mark. Please scroll down and try again. Please make sure the mark is a whole number between 0 and ' + str(q.marks) + '.', 'danger')
-        return render_template('learn/question.html.j2', show_marking=show_marking, question=q, topics=topics, subtopics=subtopics, mark=mark, form=form, title='Practise')
+        return render_template('practise/question.html.j2', show_marking=show_marking, question=q, topics=topics, subtopics=subtopics, mark=mark, form=form, title='Practise')
     else:
         flash('Invalid question. Please try again.', 'danger')
         return redirect(url_for('practise.main'))
