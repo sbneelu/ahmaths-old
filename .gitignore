@@ -1,8 +1,0 @@
-.Python
-bin
-lib
-include
-__pycache__
-*.pyc
-ahmaths/site.db
-config.json
