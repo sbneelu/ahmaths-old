@@ -4,6 +4,7 @@
 {% endblock styles %}
 {% block content %}
   <div class="row text-center">
+
     <div class="col-sm-12 col-md-8">
       {% if question.paper %}
         <h1>SQA {{ question.paper }} Question {{ question.question_number }}</h1>
@@ -68,7 +69,9 @@
       {% else %}
         <div class="row marking-aids">
       {% endif %}
-        <div class="col-12 alert alert-info mt-4">Scroll down to the bottom to input your marks.</div>
+        <br>
+        <br>
+        <p>Scroll down to the bottom to input your marks.</p>
         {% if question.video %}
           <div class="col-md-6 text-center">
             <h3 class="bold">Marking Instructions</h3>
@@ -160,6 +163,9 @@
 
     </div>
     <div class="col-sm-12 col-md-3 col-md-offset-1 mt-2">
+      <a style="width: 100%;" class="btn btn-outline-info" href="{{ url_for('static', filename='formulae-list.pdf') }}" target="_blank">Formulae List</a>
+      <br>
+      <br>
       <div class="content-section">
         <h3>Content Explanation Pages</h3>
         <small>See the pages below for topic explanations and examples.</small>

@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, flash, Blueprint
-from ahmaths.models import Topic, Subtopic
+from ahmaths.models import Topic, Subtopic, Question
 
 learn = Blueprint('learn', __name__)
 
@@ -26,7 +26,9 @@ def subtopic(topic_id, subtopic_id):
     if topic:
         subtopic = Subtopic.query.filter_by(subtopic_id=subtopic_id).first()
         if subtopic and subtopic.topic.topic_id == topic_id:
-            return render_template('learn/topics/' + topic.topic_id + '/' + subtopic.subtopic_id + '.html.j2', topic=topic, subtopic=subtopic, title=subtopic.subtopic_name + ' | Learn')
+            questions = Question.query.filter(Question.subtopics.contains(subtopic_id)).all()
+            questions.reverse()
+            return render_template('learn/topics/' + topic.topic_id + '/' + subtopic.subtopic_id + '.html.j2', topic=topic, subtopic=subtopic, questions=questions, title=subtopic.subtopic_name + ' | Learn')
         else:
             flash('Invalid subtopic. Please try again.', 'danger')
             return redirect(url_for('learn.topic', topic_id=topic_id))

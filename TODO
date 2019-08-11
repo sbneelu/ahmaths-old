@@ -1,8 +1,13 @@
-- Update index jumbotron content
-- Update home
-- Make password reset email nicer
-- Get email working on ahmaths.com domain rather than gmail.com
+- Update home - 14/8
+- Account page - 15/8
+
 - Ideally revoke user token for password reset once link has been used
 - Content explanations
-- Account page
+
+- When ready to release, contact SQA and DLBMaths
+
 - Further reading
+- Add rest of SQA questions to Practise
+- Add custom questions
+- Make password reset email look nicer
+- Get emails to send from ahmaths.com rather than gmail.com

@@ -6,6 +6,9 @@
     <br>
   </div>
   <div class="row paper-selection text-center">
+    <a style="width: 97%;" class="btn btn-outline-info" href="{{ url_for('static', filename='formulae-list.pdf') }}" target="_blank">Formulae List</a>
+    <br>
+    <br>
     {% for paper in papers %}
       <div class="col-sm-12 col-md-6 col-lg-4">
         <div class="thumbnail paper-selection-element">

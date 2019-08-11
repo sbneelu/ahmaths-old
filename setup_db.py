@@ -84,7 +84,6 @@ def setup_db(db, app):
         db.session.add(Paper(paper_name='2017 Paper', paper_id='2017'))
         db.session.add(Paper(paper_name='2018 Paper', paper_id='2018'))
 
-
         db.session.add(Question(marks=10, question_id='2007Q16', question_number='16', video='eOUZqLLSx6g?start=0', paper='2007', topics='functions_graphs'))
         db.session.add(Question(marks=10, question_id='2007Q15', question_number='15', video='TYhSuKxzquU?start=0', paper='2007', topics='vectors'))
         db.session.add(Question(marks=10, question_id='2007Q14', question_number='14', video='vpdzupLY2d8?start=0', paper='2007', topics='differential_equations'))

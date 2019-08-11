@@ -1,4 +1,4 @@
-from flask import render_template, url_for, redirect, flash, request, Blueprint, current_app
+from flask import render_template, url_for, redirect, flash, request, Blueprint
 from flask_login import login_user, logout_user, current_user, login_required
 from ahmaths import bcrypt, db
 from ahmaths.models import User
@@ -30,7 +30,7 @@ def login():
         return render_template('main/home.html.j2')
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data.lower()).first()
+        user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')

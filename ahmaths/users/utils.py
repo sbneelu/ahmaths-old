@@ -5,8 +5,8 @@ from ahmaths.config import config
 
 
 def send_reset_password_email(user):
-    token = user.get_reset_token()
-    msg = Message('Reset your Password (AHMaths.com)', sender=config['EMAIL_ADDRESS'], recipients=[user.email])
+    token = user.get_reset_token(86400)
+    msg = Message('Reset your Password (AHmaths.com)', sender=(config['EMAIL_NAME'], config['EMAIL_ADDRESS']), recipients=[user.email])
     msg.body = f'''A password reset has been requested for your account. Please go to the following link to reset your password:
 {url_for('users.reset_password', token=token, _external=True)}
 
