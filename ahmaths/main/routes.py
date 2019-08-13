@@ -10,7 +10,7 @@ main = Blueprint('main', __name__)
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
-    return render_template('index.html.j2')
+    return render_template('main/index.html.j2')
 
 
 @main.route('/home')

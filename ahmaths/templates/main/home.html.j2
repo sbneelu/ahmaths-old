@@ -1,19 +1,34 @@
 {% extends 'layout.html.j2' %}
 {% block content %}
-  <div class="row">
+  <a style="width: 100%;" class="btn btn-outline-info" href="{{ url_for('static', filename='formulae-list.pdf') }}" target="_blank">Formulae List</a>
+  <div class="row p-2">
     <div class="col-md-4 p-2">
-      <a class="full-width btn btn-outline-info" href="{{ url_for('learn.main') }}">
-        Learn
+      <a class="thumbnail selection-element text-center" href="{{ url_for('learn.main') }}">
+        <h2>Learn</h2>
+        <ul class="text-left">
+          <li>Course notes and content explanations</li>
+          <li>Worked examples</li>
+          <li>Divided into topics and subtopics</li>
+          <li>Linked practice questions</li>
+        </ul>
       </a>
     </div>
     <div class="col-md-4 p-2">
-      <a class="full-width btn btn-outline-info" href="{{ url_for('practise.main') }}">
-        Practise
+      <a class="thumbnail selection-element text-center" href="{{ url_for('practise.main') }}">
+        <h2>Practise</h2>
+        <ul class="text-left">
+          <li>Past paper questions divided into topics</li>
+          <li>Marking instructions, DLBMaths solution video and linked course notes easily accessible from question</li>
+          <li>Progress tracking for each question and by topic</li>
+        </ul>
       </a>
     </div>
     <div class="col-md-4 p-2">
-      <a class="full-width btn btn-outline-info" href="{{ url_for('revise.main') }}">
-        Revise
+      <a class="thumbnail selection-element text-center" href="{{ url_for('revise.main') }}">
+        <h2>Revise</h2>
+        <ul class="text-left">
+          <li>SQA specimen and past papers with marking instructions</li>
+        </ul>
       </a>
     </div>
   </div>

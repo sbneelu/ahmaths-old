@@ -3,7 +3,9 @@ $danger: #d9534f;
 $warning: #f0ad4e;
 $success: #5cb85c;
 
-
+a.thumbnail:hover {
+  text-decoration: none;
+}
 
 .btn-outline-info {
   border: 1px solid $mainColor;
