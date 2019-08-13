@@ -12,7 +12,7 @@ users = Blueprint('users', __name__)
 @users.route('/signup', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
-        return render_template('main/home.html.j2')
+        return redirect(url_for('main.home'))
     form = SignupForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -28,7 +28,7 @@ def signup():
 @users.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return render_template('main/home.html.j2')
+        return redirect(url_for('main.home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -50,7 +50,7 @@ def logout():
 @users.route('/reset_password', methods=['GET', 'POST'])
 def request_reset_password():
     if current_user.is_authenticated:
-        return render_template('main/home.html.j2')
+        return redirect(url_for('main.home'))
     form = RequestResetPasswordForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -63,7 +63,7 @@ def request_reset_password():
 @users.route('/reset_password/<string:token>', methods=['GET', 'POST'])
 def reset_password(token):
     if current_user.is_authenticated:
-        return render_template('main/home.html.j2')
+        return redirect(url_for('main.home'))
     user = User.verify_reset_token(token)
     if user is None:
         flash('Invalid or expired password reset link. Please request another password reset link.', 'warning')
