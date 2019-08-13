@@ -3,6 +3,8 @@ $danger: #d9534f;
 $warning: #f0ad4e;
 $success: #5cb85c;
 
+
+
 .btn-outline-info {
   border: 1px solid $mainColor;
   background-color: white;
@@ -12,6 +14,19 @@ $success: #5cb85c;
 .btn-outline-info:hover {
   border: 1px solid $mainColor;
   background-color: $mainColor;
+  color: white;
+  cursor: hand;
+}
+
+.btn-outline-danger {
+  border: 1px solid $danger;
+  background-color: white;
+  color: $danger;
+}
+
+.btn-outline-danger:hover {
+  border: 1px solid $danger;
+  background-color: $danger;
   color: white;
   cursor: hand;
 }

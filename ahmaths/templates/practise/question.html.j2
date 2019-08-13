@@ -4,6 +4,9 @@
 {% endblock styles %}
 {% block content %}
   <div class="row text-center">
+    <a style="width: 97%;" class="btn btn-outline-info" href="{{ url_for('static', filename='formulae-list.pdf') }}" target="_blank">Formulae List</a>
+    <br>
+    <br>
 
     <div class="col-sm-12 col-md-8">
       {% if question.paper %}
@@ -163,9 +166,6 @@
 
     </div>
     <div class="col-sm-12 col-md-3 col-md-offset-1 mt-2">
-      <a style="width: 100%;" class="btn btn-outline-info" href="{{ url_for('static', filename='formulae-list.pdf') }}" target="_blank">Formulae List</a>
-      <br>
-      <br>
       <div class="content-section">
         <h3>Content Explanation Pages</h3>
         <small>See the pages below for topic explanations and examples.</small>

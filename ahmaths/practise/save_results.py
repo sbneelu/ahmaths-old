@@ -33,7 +33,8 @@ def save_marks_to_progress(topic_id):
     mark = 0
     questions = getattr(current_user, topic_id).split(',')
     for question in questions:
-        mark += int(question.split(':')[1])
+        if question:
+            mark += int(question.split(':')[1])
     percentage = round(mark / max_marks * 100)
     progress[topic_id] = str(percentage)
     progress_strings = ''
