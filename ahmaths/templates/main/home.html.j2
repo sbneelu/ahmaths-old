@@ -1,9 +1,9 @@
 {% extends 'layout.html.j2' %}
 {% block content %}
-  <a style="width: 100%;" class="btn btn-outline-info" href="{{ url_for('static', filename='formulae-list.pdf') }}" target="_blank">Formulae List</a>
-  <div class="row p-2 visible-md visible-lg">
+  <a style="width: 100%;" class="btn btn-outline-info mb-2" href="{{ url_for('static', filename='formulae-list.pdf') }}" target="_blank">Formulae List</a>
+  <div style="margin: auto;" class="row p-2 visible-md visible-lg thumbnail paper-selection-element">
     <div class="col-md-4 p-2">
-      <div class="thumbnail paper-selection-element p-2">
+      <div class="p-2">
         <h2 class="text-center">Learn</h2>
         <ul class="text-left">
           <li>Course notes and content explanations</li>
@@ -16,8 +16,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 p-2">
-      <div class="thumbnail paper-selection-element p-2">
+    <div class="col-md-4 p-2" style="border-left: 1px solid #2B7EB8; border-right: 1px solid #2B7EB8;">
+      <div class="p-2">
         <h2 class="text-center">Practise</h2>
         <ul class="text-left">
           <li>Past paper questions divided into topics</li>
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="col-md-4 p-2">
-      <div class="thumbnail paper-selection-element p-2">
+      <div class="p-2">
         <h2 class="text-center">Revise</h2>
         <ul class="text-left">
           <li>SQA specimen and past papers with marking instructions</li>
