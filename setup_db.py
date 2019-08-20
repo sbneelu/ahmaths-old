@@ -37,7 +37,7 @@ def setup_db(db, app):
         db.session.add(Subtopic(subtopic_id='related_rates', subtopic_name='Related Rates of Change', topic_id='differentiation'))
 
         db.session.add(Subtopic(subtopic_id='euclidean_algorithm', subtopic_name='Euclidean Algorithm', topic_id='number_theory'))
-        db.session.add(Subtopic(subtopic_id='number_theory', subtopic_name='Number Bases', topic_id='number_theory'))
+        db.session.add(Subtopic(subtopic_id='number_bases', subtopic_name='Number Bases', topic_id='number_theory'))
 
         db.session.add(Subtopic(subtopic_id='distinct_linear_factors', subtopic_name='Partial Fractions with Distinct Linear Factors', topic_id='partial_fractions'))
         db.session.add(Subtopic(subtopic_id='repeated_linear_factor', subtopic_name='Partial Fractions with a Repeated Linear Factors', topic_id='partial_fractions'))
@@ -62,6 +62,11 @@ def setup_db(db, app):
         db.session.add(Subtopic(subtopic_id='contradiction', subtopic_name='Proof by Contradiction', topic_id='methods_of_proof'))
         db.session.add(Subtopic(subtopic_id='induction', subtopic_name='Proof by Induction', topic_id='methods_of_proof'))
         db.session.add(Subtopic(subtopic_id='counter_example', subtopic_name='Disproving by Counter-Example', topic_id='methods_of_proof'))
+
+        db.session.add(Subtopic(subtopic_id='first_order_variables_separable', subtopic_name='First Order Variables Separable Differential Equations', topic_id='differential_equations'))
+        db.session.add(Subtopic(subtopic_id='first_order_integrating_factor', subtopic_name='First Order Integrating Factor Differential Equations', topic_id='differential_equations'))
+        db.session.add(Subtopic(subtopic_id='second_order_homogeneous', subtopic_name='Second Order Homogeneous Differential Equations', topic_id='differential_equations'))
+        db.session.add(Subtopic(subtopic_id='second_order_non_homogeneous', subtopic_name='Second Order Non-Homogeneous Differential Equations', topic_id='differential_equations'))
 
         db.session.add(Paper(paper_name='Specimen Paper (2000)', paper_id='Specimen(2000)'))
         db.session.add(Paper(paper_name='2002 Paper', paper_id='2002'))
